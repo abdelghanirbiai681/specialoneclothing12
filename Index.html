@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elite Men's Fashion - Premium Clothing Store</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="store.css">
+</head>
+<body class="content-bg text-gray-900 transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100">
+  <!-- Loading Screen -->
+  <div id="loading-overlay">
+    <p class="loading-message">Special One Clothing - Where elegance meets individuality in every stitch. Crafted for those who dare to stand out.</p>
+    <div class="loading-indicator">
+      <div class="loading-dot"></div>
+      <div class="loading-dot"></div>
+      <div class="loading-dot"></div>
+    </div>
+  </div>
+
+  <!-- Header (Will be hidden when in shop mode) -->
+  <header id="main-navigation" class="sticky top-0 z-40 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md shadow-sm transition-all duration-300">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="text-2xl font-bold text-primary-500 dark:text-accent-500 flex items-center font-serif">
+      <i class= " fa-solid fa-1 gold-gradient-text "></i> 
+          <span class="gold-gradient-text font-display">special one clothing</span>
+      </a>
+      
+      <!-- Navigation -->
+      <nav class="hidden md:flex space-x-8">
+        <a href="#" class="font-medium hover:text-secondary-500 dark:hover:text-accent-500 transition-colors">Home</a>
+        <a href="#shop" class="font-medium hover:text-secondary-500 dark:hover:text-accent-500 transition-colors">Shop</a>
+        <a href="#about" class="font-medium hover:text-secondary-500 dark:hover:text-accent-500 transition-colors">About</a>
+        <a href="#contact" class="font-medium hover:text-secondary-500 dark:hover:text-accent-500 transition-colors">Contact</a>
+      </nav>
+      
+      <!-- Icons -->
+      <div class="flex items-center space-x-4">
+        <!-- Search -->
+        <div class="relative">
+          <input type="text" id="search-input" placeholder="Search..."
+                  class="search-container absolute right-0 top-1/2 -translate-y-1/2 bg-gray-100 dark:bg-gray-700 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-secondary-500 dark:focus:ring-accent-500">
+          <button id="search-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <i class="fas fa-search text-primary-500 dark:text-accent-500"></i>
+          </button>
+        </div>
+        
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+          <i id="theme-icon" class="fas fa-moon text-primary-500 dark:text-accent-500"></i>
+        </button>
+        
+        <!-- Cart -->
+        <button id="cart-button" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors relative">
+          <i class="fas fa-shopping-cart text-primary-500 dark:text-accent-500"></i>
+          <span id="cart-count" class="cart-indicator absolute -top-2 -right-2 bg-secondary-500 dark:bg-accent-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+        </button>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-button" class="md:hidden p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+          <i class="fas fa-bars text-primary-500 dark:text-accent-500"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-gray-800 shadow-lg">
+      <div class="container mx-auto px-4 py-2 flex flex-col space-y-2">
+        <a href="#" class="py-2 font-medium hover:text-secondary-500 dark:hover:text-accent-500 transition-colors">Home</a>
+        <a href="#shop" class="py-2 font-medium hover:text-secondary-500 dark:hover:text-accent-500 transition-colors">Shop</a>
+        <a href="#about" class="py-2 font-medium hover:text-secondary-500 dark:hover:text-accent-500 transition-colors">About</a>
+        <a href="#contact" class="py-2 font-medium hover:text-secondary-500 dark:hover:text-accent-500 transition-colors">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section-bg bg-cover bg-center h-96 md:h-screen flex items-center justify-center text-center">
+    <div class="container mx-auto px-4">
+      <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade hero-heading" data-scroll="fade">Wear No.1</h1>
+      <p class="text-xl md:text-2xl text-white mb-8 max-w-2xl mx-auto animate-fade font-serif" style="animation-delay: 0.2s;" data-scroll="fade" >لبسك رقم واحد... والباقي تقليد </p>
+      <button id="shop-now-btn" class="bg-gradient-to-r from-secondary-500 to-accent-500 hover:from-secondary-600 hover:to-accent-600 text-white font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg hover:shadow-xl animate-fade" style="animation-delay: 0.4s;" data-scroll="fade">
+        Shop Now
+      </button>
+    </div>
+  </section>
+
+  <!-- Category Cards -->
+  <section id="shop" class="container mx-auto px-4 py-12 bg-white dark:bg-gray-800 bg-opacity-90 rounded-lg my-8">
+    <h2 class="text-4xl font-bold text-center mb-12 gold-gradient-text section-heading" data-scroll="fade">SHOP BY CATEGORY</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Men's Category -->
+      <div class="category-card-container rounded-xl shadow-lg overflow-hidden cursor-pointer h-full" data-scroll="left">
+        <div class="category-card-inner relative h-80 overflow-hidden" onclick="showProducts('men')">
+          <img src="https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Men's Collection" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+          <div class="category-overlay-effect absolute inset-0 flex items-end p-6">
+            <h3 class="category-heading text-3xl font-bold text-white">Men's Apparel</h3>
+          </div>
+          <div class="absolute top-4 right-4 bg-accent-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-md">
+            New Arrivals
+          </div>
+        </div>
+      </div>
+      
+      <!-- Shoes Collection -->
+      <div class="category-card-container rounded-xl shadow-lg overflow-hidden cursor-pointer h-full" data-scroll="fade">
+        <div class="category-card-inner relative h-80 overflow-hidden" onclick="showProducts('shoes')">
+          <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=398&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Shoes Collection" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+          <div class="category-overlay-effect absolute inset-0 flex items-end p-6">
+            <h3 class="category-heading text-3xl font-bold text-white">Shoes</h3>
+          </div>
+          <div class="absolute top-4 right-4 bg-secondary-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-md">
+            Best Sellers
+          </div>
+        </div>
+      </div>
+      
+      <!-- Accessories Category -->
+      <div class="category-card-container rounded-xl shadow-lg overflow-hidden cursor-pointer h-full" data-scroll="right">
+        <div class="category-card-inner relative h-80 overflow-hidden" onclick="showProducts('accessories')">
+          <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80"
+                alt="Accessories" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+          <div class="category-overlay-effect absolute inset-0 flex items-end p-6">
+            <h3 class="category-heading text-3xl font-bold text-white">Accessories</h3>
+          </div>
+          <div class="absolute top-4 right-4 bg-primary-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-md">
+            Limited Edition
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section (Initially Hidden) -->
+  <section id="products-section" class="container mx-auto px-4 py-12 bg-white dark:bg-gray-800 bg-opacity-90 rounded-lg my-8 hidden">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+      <h2 id="products-title" class="text-4xl font-bold gold-gradient-text section-heading"></h2>
+      <div class="flex items-center gap-4">
+        <!-- Sort Button -->
+        <div class="relative">
+          <button id="sort-button" class="flex items-center gap-2 bg-gray-100 dark:bg-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+            <i class="fas fa-sort-amount-down"></i>
+            <span>Sort</span>
+          </button>
+          <div id="sort-dropdown" class="sort-dropdown-menu absolute right-0 mt-2 w-48 bg-white dark:bg-gray-700 rounded-md shadow-lg z-10">
+            <div class="py-1">
+              <button class="sort-option block w-full text-left px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600" data-sort="price-low">Price: Low to High</button>
+              <button class="sort-option block w-full text-left px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600" data-sort="price-high">Price: High to Low</button>
+              <button class="sort-option block w-full text-left px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600" data-sort="name-asc">Name: A-Z</button>
+              <button class="sort-option block w-full text-left px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600" data-sort="name-desc">Name: Z-A</button>
+            </div>
+          </div>
+        </div>
+        <button id="back-to-categories" class="text-secondary-500 dark:text-accent-500 hover:text-secondary-600 dark:hover:text-accent-600 hover:underline flex items-center">
+          <i class="fas fa-arrow-left mr-2"></i> Back to Categories
+        </button>
+      </div>
+    </div>
+    <div id="products-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- Products will be inserted here by JavaScript -->
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="bg-white dark:bg-gray-800 bg-opacity-90 py-16 my-8 rounded-lg">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12 gold-gradient-text section-heading" data-scroll="fade">ABOUT special one clothing</h2>
+      <div class="flex flex-col md:flex-row items-center gap-12">
+        <div class="md:w-1/2" data-scroll="left">
+          <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Our Store" class="rounded-lg shadow-lg w-full h-auto object-cover floating-element">
+        </div>
+        <div class="md:w-1/2" data-scroll="right">
+          <p class="text-lg mb-6">
+Special One Clothing est une marque de vêtements née en 2025, fruit de la créativité d'un groupe d'étudiants inspirés par une demande de leur professeure de digital skills, Madame <b>Rim Marah</b>. 
+Ce projet, lancé comme un simple exercice en classe, s'est rapidement transformé en une véritable aventure entrepreneuriale.
+          </p>
+          <p class="text-lg mb-6">
+           Portée par une vision claire : allier style, originalité et excellence — la marque incarne l'audace d'une jeunesse qui ose créer,
+            innover et se démarquer.
+          </p>
+          <p class="text-lg">
+            Special One Clothing ne se contente pas de suivre les tendances, elle les lance. Car ici, chaque pièce raconte une histoire : 
+            celle de ceux qui veulent être uniques… les numéros un.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="bg-white dark:bg-gray-800 bg-opacity-90 py-16 my-8 rounded-lg">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12 gold-gradient-text section-heading" data-scroll="fade">CONTACT US</h2>
+      <div class="flex flex-col md:flex-row gap-12">
+        <div class="md:w-1/2" data-scroll="left">
+          <h3 class="text-xl font-bold mb-4">Get in Touch</h3>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <i class="fas fa-map-marker-alt text-secondary-500 dark:text-accent-500 mt-1 mr-4"></i>
+              <div>
+                <h4 class="font-medium">Address</h4>
+                <p class="text-gray-600 dark:text-gray-300">Lhey lidari ,Aghbala,Béni Mellal, Morocco</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <i class="fas fa-phone text-secondary-500 dark:text-accent-500 mt-1 mr-4"></i>
+              <div>
+                <h4 class="font-medium">Phone</h4>
+                <p class="text-gray-600 dark:text-gray-300">+212 6 23 30 34 31</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <i class="fas fa-envelope text-secondary-500 dark:text-accent-500 mt-1 mr-4"></i>
+              <div>
+                <h4 class="font-medium">Email</h4>
+                <p class="text-gray-600 dark:text-gray-300">specialoneclothing1@gmail.com</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <i class="fas fa-clock text-secondary-500 dark:text-accent-500 mt-1 mr-4"></i>
+              <div>
+                <h4 class="font-medium">Hours</h4>
+                <p class="text-gray-600 dark:text-gray-300">Monday - Friday: 9AM - 9PM</p>
+                <p class="text-gray-600 dark:text-gray-300">Saturday - Sunday: 10AM - 8PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="md:w-1/2" data-scroll="right">
+          <h3 class="text-xl font-bold mb-4">Send Us a Message</h3>
+          <form class="space-y-4">
+            <div>
+              <label for="name" class="block mb-1">Name</label>
+              <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary-500 dark:focus:ring-accent-500 bg-white dark:bg-gray-700">
+            </div>
+            <div>
+              <label for="email" class="block mb-1">Email</label>
+              <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary-500 dark:focus:ring-accent-500 bg-white dark:bg-gray-700">
+            </div>
+            <div>
+              <label for="message" class="block mb-1">Message</label>
+              <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary-500 dark:focus:ring-accent-500 bg-white dark:bg-gray-700"></textarea>
+            </div>
+            <button type="submit" class="bg-gradient-to-r from-secondary-500 to-accent-500 hover:from-secondary-600 hover:to-accent-600 text-white font-medium py-2 px-6 rounded-lg transition-colors shadow-md">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="bg-gradient-to-r from-primary-500 to-dark-500 py-12 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-4 font-serif" data-scroll="fade">Stay Updated</h2>
+      <p class="mb-6 max-w-2xl mx-auto" data-scroll="fade">Subscribe to our newsletter for the latest trends and exclusive offers</p>
+      <div class="flex max-w-md mx-auto" data-scroll="fade">
+        <input type="email" placeholder="Your email address" class="flex-grow px-4 py-2 rounded-l-full focus:outline-none text-gray-900">
+        <button class="bg-accent-500 hover:bg-accent-600 text-primary-500 px-6 py-2 rounded-r-full transition-colors font-bold">
+          Subscribe
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-primary-500 dark:bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 text-accent-500 font-serif"> Special one Clothing </h3>
+          <p class="text-gray-300">Special One Clothing — là où le style commence avec toi.</p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Shop</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Men's Apparel</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Shoes</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Accessories</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Help</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Customer Service</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Track Order</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Returns & Exchanges</a></li>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Connect</h4>
+          <div class="flex space-x-4">
+            <a href="https://web.facebook.com/?_rdc=1&_rdr" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white transition-colors"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-primary-600 dark:border-gray-700 mt-8 pt-8 text-center text-gray-300">
+        <p>&copy; 2025 specailoneclothing.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Product Modal -->
+  <div id="product-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden modal-overlay-effect">
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+      <div class="p-6">
+        <div class="flex justify-between items-start mb-6">
+          <h3 id="modal-title" class="text-2xl font-bold font-serif"></h3>
+          <button id="modal-close" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        
+        <div class="flex flex-col md:flex-row gap-8">
+          <div class="md:w-1/2">
+            <img id="modal-image" src="" alt="" class="w-full h-auto rounded-lg">
+          </div>
+          
+          <div class="md:w-1/2">
+            <p id="modal-description" class="text-gray-600 dark:text-gray-300 mb-6"></p>
+            <div class="flex items-center mb-6">
+              <span id="modal-price" class="text-2xl font-bold text-secondary-500 dark:text-accent-500 price-display"></span>
+              <span class="ml-2 text-sm text-gray-500">(Inclusive of all taxes)</span>
+            </div>
+            
+            <div class="mb-6">
+              <label for="size-select" class="block mb-2 font-medium">Size</label>
+              <select id="size-select" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700">
+                <option value="S">Small (S)</option>
+                <option value="M" selected>Medium (M)</option>
+                <option value="L">Large (L)</option>
+                <option value="XL">Extra Large (XL)</option>
+              </select>
+            </div>
+            
+            <div class="mb-6">
+              <label for="color-select" class="block mb-2 font-medium">Color</label>
+              <div class="flex space-x-2">
+                <button class="w-8 h-8 rounded-full bg-red-500 border-2 border-transparent hover:border-gray-300 dark:hover:border-gray-500"></button>
+                <button class="w-8 h-8 rounded-full bg-blue-500 border-2 border-transparent hover:border-gray-300 dark:hover:border-gray-500"></button>
+                <button class="w-8 h-8 rounded-full bg-black border-2 border-transparent hover:border-gray-300 dark:hover:border-gray-500"></button>
+                <button class="w-8 h-8 rounded-full bg-white border-2 border-gray-300 hover:border-gray-500"></button>
+              </div>
+            </div>
+            
+            <div class="flex space-x-4">
+              <button id="add-to-cart" class="flex-1 bg-secondary-500 dark:bg-accent-500 hover:bg-secondary-600 dark:hover:bg-accent-600 text-white py-3 px-6 rounded-full transition-colors shadow-md">
+                Add to Cart
+              </button>
+              <button id="buy-now" class="flex-1 bg-primary-500 hover:bg-primary-600 text-white py-3 px-6 rounded-full transition-colors shadow-md">
+                Buy Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Sidebar -->
+  <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full sm:w-96 bg-white dark:bg-gray-800 shadow-xl z-50 transform translate-x-full transition-transform duration-300 overflow-y-auto">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="text-xl font-bold font-serif">Your Cart</h3>
+        <button id="cart-close" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      
+      <div id="cart-items" class="space-y-4">
+        <!-- Cart items will be inserted here by JavaScript -->
+      </div>
+      
+      <div class="border-t border-gray-200 dark:border-gray-700 mt-6 pt-6">
+        <div class="flex justify-between mb-2">
+          <span>Subtotal</span>
+          <span id="cart-subtotal">0.00 MAD</span>
+        </div>
+        <div class="flex justify-between mb-4">
+          <span>Shipping</span>
+          <span>Free</span>
+        </div>
+        <div class="flex justify-between font-bold text-lg">
+          <span>Total</span>
+          <span id="cart-total">0.00 MAD</span>
+        </div>
+        
+        <button id="checkout-btn" class="w-full bg-gradient-to-r from-secondary-500 to-accent-500 hover:from-secondary-600 hover:to-accent-600 text-white py-3 px-6 rounded-full mt-6 transition-colors shadow-md">
+          Proceed to Checkout
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Cart Button (Hidden by default) -->
+  <button id="floating-cart-btn" class="floating-cart-button hidden bg-secondary-500 dark:bg-accent-500 text-white p-4 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all">
+    <i class="fas fa-shopping-cart"></i>
+    <span id="floating-cart-count" class="absolute -top-2 -right-2 bg-white dark:bg-gray-900 text-secondary-500 dark:text-accent-500 text-xs rounded-full w-6 h-6 flex items-center justify-center">0</span>
+  </button>
+
+  <!-- Added to Cart Notification (Hidden by default) -->
+  <div id="added-to-cart-notification" class="cart-notification hidden bg-secondary-500 dark:bg-accent-500 text-white px-6 py-3 rounded-full shadow-lg">
+    <i class="fas fa-check-circle mr-2"></i>
+    <span id="notification-message">Item added to cart</span>
+  </div>
+
+  <script src="store.js"></script>
+</body>
+</html>
